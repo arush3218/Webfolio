@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Arush Verma{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="background-overlay"></div>
+
+    <header class="header">
+      <div class="container navbar">
+        <div class="navbar-brand">
+          <a href="{% url 'home' %}" class="logo">
+            <h1 class="site-title">ARUSH VERMA</h1></a
+          >
+        </div>
+
+          <span class="hamburger"></span>
+        </button>
+
+        <nav class="navbar-menu" id="navbar-menu">
+          <ul>
+            <li>
+              <a
+                href="{% url 'home' %}"
+                class="{% if request.path == '/' %}active{% endif %}"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'blog_list' %}"
+                class="{% if '/blog/' in request.path %}active{% endif %}"
+                >Blogs</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'project_list' %}"
+                class="{% if '/projects/' in request.path %}active{% endif %}"
+                >Projects</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">{% block content %}{% endblock %}</main>
+
+    <div class="music-player">
+      <audio id="bgMusic" loop>
+        <source src="/static/audio/background-music.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <button id="musicToggle" class="music-toggle" title="Toggle Music">
+        <i class="fa fa-music"></i>
+        <span id="musicStatus">Play Music</span>
+      </button>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+  </body>
+</html>

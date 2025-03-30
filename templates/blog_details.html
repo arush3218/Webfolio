@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}{{ blog.title }} | Arush Verma{%
+endblock %} {% block content %}
+<article class="blog-detail">
+  <h2 class="blog-title">{{ blog.title }}</h2>
+  <div class="blog-meta">
+    <span class="blog-date">{{ blog.created_at|date:"M d, Y" }}</span>
+    <span class="blog-reading-time"
+      >{{ blog.content|wordcount|divisibleby:200|add:1 }} min</span
+    >
+    <span class="blog-category">{{ blog.category|default:"general" }}</span>
+  </div>
+
+  <div class="blog-content">{{ blog.content|linebreaks }}</div>
+
+  <a href="{% url 'blog_list' %}" class="back-link">← Back to Blogs</a>
+</article>
+{% endblock %}

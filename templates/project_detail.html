@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %}{{ project.title }} | Arush Verma{%
+endblock %} {% block content %}
+<article class="project-detail">
+  <h2 class="project-title">{{ project.title }}</h2>
+
+  <div class="project-content">{{ project.description|linebreaks }}</div>
+
+  <div class="project-links">
+    {% if project.github_url %}
+    <a href="{{ project.github_url }}" class="github-link" target="_blank">
+      <i class="fab fa-github"></i> View on GitHub
+    </a>
+    {% endif %} {% if project.url %}
+    <a href="{{ project.url }}" class="live-link" target="_blank">
+      <i class="fas fa-external-link-alt"></i> Live Demo
+    </a>
+    {% endif %}
+  </div>
+
+  <a href="{% url 'project_list' %}" class="back-link">← Back to Projects</a>
+</article>
+{% endblock %}
